@@ -8,10 +8,10 @@
             </div>
 
             <div id="next">
-                <table class="table table-bordered table-hover table-stripped">
+                <table class="table table-bordered table-hover table-stripped text-center">
                     <thead>
                     <tr class="bg-primary">
-                        <th></th>
+                        <th>Staff</th>
                         <th>Monday</th>
                         <th>Tuesday</th>
                         <th>Wednesday</th>
@@ -21,16 +21,18 @@
                         <th class="bg-info">Sunday</th>
                     </tr>
                     </thead>
-                    <tr>
-                        <th class="bg-primary">....</th>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                    </tr>
+                    {% for id, staff in shifts %}
+                        <tr>
+                            <th class="bg-primary">{{ id }}</th>
+                            <td nowrap>{% if staff.monday is defined %}{{ staff.monday.startTime | date('H:i') }} to {{ staff.monday.endTime | date('H:i') }}<br/>{{ staff.monday.workHours }} hours{% if staff.monday.workAloneMinutes %}<br/> {{ staff.monday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                            <td nowrap>{% if staff.tuesday is defined %}{{ staff.tuesday.startTime | date('H:i') }} to {{ staff.tuesday.endTime | date('H:i') }}<br/>{{ staff.tuesday.workHours }} hours{% if staff.tuesday.workAloneMinutes %}<br/> {{ staff.tuesday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                            <td nowrap>{% if staff.wednesday is defined %}{{ staff.wednesday.startTime | date('H:i') }} to {{ staff.wednesday.endTime | date('H:i') }}<br/>{{ staff.wednesday.workHours }} hours{% if staff.wednesday.workAloneMinutes %}<br/> {{ staff.wednesday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                            <td nowrap>{% if staff.thursday is defined %}{{ staff.thursday.startTime | date('H:i') }} to {{ staff.thursday.endTime | date('H:i') }}<br/>{{ staff.thursday.workHours }} hours{% if staff.thursday.workAloneMinutes %}<br/> {{ staff.thursday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                            <td nowrap>{% if staff.friday is defined %}{{ staff.friday.startTime | date('H:i') }} to {{ staff.friday.endTime | date('H:i') }}<br/>{{ staff.friday.workHours }} hours{% if staff.friday.workAloneMinutes %}<br/> {{ staff.friday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                            <td nowrap>{% if staff.saturday is defined %}{{ staff.saturday.startTime | date('H:i') }} to {{ staff.saturday.endTime | date('H:i') }}<br/>{{ staff.saturday.workHours }} hours{% if staff.saturday.workAloneMinutes %}<br/> {{ staff.saturday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                            <td nowrap>{% if staff.sunday is defined %}{{ staff.sunday.startTime | date('H:i') }} to {{ staff.sunday.endTime | date('H:i') }}<br/>{{ staff.sunday.workHours }} hours{% if staff.sunday.workAloneMinutes %}<br/> {{ staff.sunday.workAloneMinutes }} minutes{% endif %}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
                 </table>
             </div>
 

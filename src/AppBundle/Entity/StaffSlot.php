@@ -29,9 +29,9 @@ class StaffSlot
     private $rota;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="daynumber", type="boolean", nullable=false)
+     * @ORM\Column(name="daynumber", type="integer", nullable=false)
      */
     private $dayNumber;
 
@@ -130,15 +130,15 @@ class StaffSlot
     }
 
     /**
-     * @return boolean
+     * @return int
      */
-    public function isDayNumber ()
+    public function getDayNumber ()
     {
         return $this->dayNumber;
     }
 
     /**
-     * @param boolean $dayNumber
+     * @param int $dayNumber
      */
     public function setDayNumber ($dayNumber)
     {

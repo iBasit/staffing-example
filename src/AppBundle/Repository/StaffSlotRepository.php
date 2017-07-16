@@ -17,13 +17,12 @@ class StaffSlotRepository extends EntityRepository
             ->createQuery('
                 SELECT s
                 FROM  AppBundle:StaffSlot s
-                WHERE s.slottype
-                AND   f.rating >= 3
-                ORDER BY s.daynumber
+                WHERE s.slotType = :shiftType
+                AND   s.staff IS NOT NULL
+                ORDER BY s.staff
                 '
             )
-            ->setParameter('isProvider', false)
-            ->setMaxResults($limit)
+            ->setParameter('shiftType', 'shift')
             ->getResult();
     }
 }

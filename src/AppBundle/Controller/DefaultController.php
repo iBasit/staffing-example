@@ -14,9 +14,10 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        $shifts = $this->getDoctrine()->getRepository('AppBundle:StaffSlot')->findBy([
+        $slots = $this->getDoctrine()->getRepository('AppBundle:StaffSlot')->workingShifts();
+        $work  = $this->get('app.work');
+        $shifts = $work->shiftGroupByStaff($slots);
 
-        ]);
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
