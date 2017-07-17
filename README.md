@@ -1,5 +1,6 @@
 # Staffing Test
 
+![Preview Image](screenshot.png)
 
 ## Install Application
 
